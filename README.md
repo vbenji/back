@@ -3,6 +3,7 @@
 ## Requirements
 
 - Java 17 or later
+- A Postgres Database
 
 ## Dev / Local
 
