@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  kim-postgres:
+    container_name: fs-postgres
+    image: postgres:14.3-alpine
+    environment:
+      POSTGRES_DB: fs
+      POSTGRES_USER: fs
+      POSTGRES_PASSWORD: fs
+    ports:
+      - 5433:5432
+    networks:
+      - fs
+
+networks:
+  fs:
+    name: cours-fullstack
