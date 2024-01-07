@@ -1,5 +1,26 @@
 # Michelin
 
+## Architecture
+
+```mermaid
+
+flowchart LR
+    subgraph Client
+        browser["Browser"]
+    end
+    subgraph Server 
+        backend["Backend server"]
+        frontend["Frontend server"]
+    end
+    subgraph Cloud 
+        s3
+    end
+    
+    browser -- "Loads Angular SPA" --> frontend
+    browser -- "Make API Calls" --> backend
+    backend -- "generates upload/download URLs" --> s3
+```
+
 ## Requirements
 
 - Java 17 or later

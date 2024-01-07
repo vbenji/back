@@ -14,8 +14,9 @@ public class EvaluationService {
 
     private final EvaluationRepository evaluationRepository;
     private final RestaurantService restaurantService;
+    private final S3Service s3Service;
 
-    public EvaluationEntity getEvaluationById(int evaluationId){
+    public EvaluationEntity getEvaluationById(int evaluationId) {
         return this.evaluationRepository.findById(evaluationId)
                 .orElseThrow(() -> new ResourceDoesntExistException("The evaluation with id " + evaluationId + " does not exist"));
     }
@@ -50,6 +51,16 @@ public class EvaluationService {
 
         EvaluationEntity entity = this.getEvaluationById(evaluationId);
         this.evaluationRepository.delete(entity);
+    }
+
+    public String getIllustration(int restaurantId) {
+        this.getEvaluationById(restaurantId); // Check that the evaluation exists
+        return this.s3Service.getIllustrationsDownloadUrl(restaurantId);
+    }
+
+    public String putIllustration(int restaurantId) {
+        this.getEvaluationById(restaurantId); // Check that the evaluation exists
+        return this.s3Service.putIllustrationsDownloadUrl(restaurantId);
     }
 
 }

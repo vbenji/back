@@ -1,18 +1,14 @@
 version: "3.7"
 
 services:
-  kim-postgres:
-    container_name: fs-postgres
-    image: postgres:14.3-alpine
-    environment:
-      POSTGRES_DB: fs
-      POSTGRES_USER: fs
-      POSTGRES_PASSWORD: fs
+  polytech-s3:
+    image: minio/minio
+    container_name: polytech-s3
+    restart: no
     ports:
-      - 5433:5432
-    networks:
-      - fs
-
-networks:
-  fs:
-    name: cours-fullstack
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: Polytech
+      MINIO_ROOT_PASSWORD: Polytech
+    command: server /home/minio --console-address ":9001"

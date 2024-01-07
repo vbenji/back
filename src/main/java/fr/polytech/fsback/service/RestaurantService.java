@@ -15,6 +15,7 @@ import java.util.List;
 public class RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
+    private final S3Service s3Service;
 
     public List<RestaurantEntity> getRestaurants() {
         return this.restaurantRepository.findAll();
@@ -40,7 +41,7 @@ public class RestaurantService {
         return this.restaurantRepository.save(nouveauRestaurant);
     }
 
-    public RestaurantEntity updateRestaurant(int id, String nom, String adresse) {
+    public RestaurantEntity updateRestaurant(int restaurantId, String nom, String adresse) {
         if (nom == null || nom.isBlank()) {
             throw new InvalidValueException("le nouveau nom ne doit pas être vide");
         }
@@ -49,11 +50,21 @@ public class RestaurantService {
             throw new InvalidValueException("la nouvelle adresse ne doit pas être vide");
         }
 
-        RestaurantEntity restaurant = this.getRestaurantById(id);
+        RestaurantEntity restaurant = this.getRestaurantById(restaurantId);
         restaurant.setNom(nom);
         restaurant.setAdresse(adresse);
 
         return this.restaurantRepository.save(restaurant);
+    }
+
+    public String getPhoto(int restaurantId) {
+        this.getRestaurantById(restaurantId); // Check that the restaurant exists
+        return this.s3Service.getPhotosDownloadUrl(restaurantId);
+    }
+
+    public String putPhoto(int restaurantId) {
+        this.getRestaurantById(restaurantId); // Check that the restaurant exists
+        return this.s3Service.putPhotosDownloadUrl(restaurantId);
     }
 
 }

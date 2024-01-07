@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: root
+    url: jdbc:h2:./cours;AUTO_SERVER=TRUE
+    username: root
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+s3:
+  buckets:
+    illustrations: examillustrations
+    photos: examphotos
+  hostname: http://127.0.0.1:9000
+  access_key: VrxI8xqvw4veHiJmvlx1
+  secret_key: znFFrTYNoEAdCQDShvDjE47hPJikdz2zzAyyWpNk

@@ -2,6 +2,7 @@ package fr.polytech.fsback.controller;
 
 import fr.polytech.fsback.dto.requests.AddEvaluationDto;
 import fr.polytech.fsback.dto.responses.EvaluationDto;
+import fr.polytech.fsback.dto.responses.GetS3UrlResponseDto;
 import fr.polytech.fsback.service.EvaluationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,16 @@ public class EvaluationController {
     @DeleteMapping("/restaurants/{restaurantId}/evaluations/{evaluationId}")
     public void addEvaluationToRestaurant(@Valid @PathVariable int restaurantId, @Valid @PathVariable int evaluationId) {
         this.evaluationService.deleteEvaluation(restaurantId, evaluationId);
+    }
+
+    @GetMapping("/restaurants/{restaurantId}/illustration")
+    public @ResponseBody GetS3UrlResponseDto getRestaurantPhotoById(@Valid @PathVariable int restaurantId) {
+        return GetS3UrlResponseDto.fromEntity(this.evaluationService.getIllustration(restaurantId));
+    }
+
+    @PutMapping("/restaurants/{restaurantId}/illustration")
+    public @ResponseBody GetS3UrlResponseDto putRestaurantPhotoById(@Valid @PathVariable int restaurantId) {
+        return GetS3UrlResponseDto.fromEntity(this.evaluationService.putIllustration(restaurantId));
     }
 
 }
