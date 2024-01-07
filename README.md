@@ -34,7 +34,7 @@ flowchart LR
 
 ```mvn package```
 
-Generates a jar file at ```target/fs-back-0.0.1-SNAPSHOT.jar```
+Generates a jar file at ```target/michelin-back-0.0.1-SNAPSHOT.jar```
 
 ## Environment variabvles
 

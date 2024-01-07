@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <groupId>fr.polytech</groupId>
-    <artifactId>cours</artifactId>
+    <artifactId>michelin-back</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cours</name>
     <description>Backend du cours fullstack Polytech</description>

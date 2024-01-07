@@ -12,4 +12,3 @@ public class SwaggerConfig {
         return GroupedOpenApi.builder().group("tpnote - API").pathsToMatch("/**").build();
     }
 }
-
