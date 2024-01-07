@@ -53,14 +53,14 @@ public class EvaluationService {
         this.evaluationRepository.delete(entity);
     }
 
-    public String getIllustration(int restaurantId) {
-        this.getEvaluationById(restaurantId); // Check that the evaluation exists
-        return this.s3Service.getIllustrationsDownloadUrl(restaurantId);
+    public String getIllustration(int restaurantId, int evaluationId) {
+        this.getEvaluationById(evaluationId); // Check that the evaluation exists
+        return this.s3Service.getIllustrationsDownloadUrl(evaluationId);
     }
 
-    public String putIllustration(int restaurantId) {
-        this.getEvaluationById(restaurantId); // Check that the evaluation exists
-        return this.s3Service.putIllustrationsDownloadUrl(restaurantId);
+    public String putIllustration(int restaurantId, int evaluationId) {
+        this.getEvaluationById(evaluationId); // Check that the evaluation exists
+        return this.s3Service.putIllustrationsDownloadUrl(evaluationId);
     }
 
 }

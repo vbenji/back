@@ -36,7 +36,7 @@ public class S3Service {
     }
 
     public String putPhotosDownloadUrl(final int objectId) {
-        return this.getDownloadUrl(String.valueOf(objectId), environment.getProperty("s3.buckets.photos"));
+        return this.putDownloadUrl(String.valueOf(objectId), environment.getProperty("s3.buckets.photos"));
     }
 
     public String getIllustrationsDownloadUrl(final int objectId) {
@@ -44,7 +44,7 @@ public class S3Service {
     }
 
     public String putIllustrationsDownloadUrl(final int objectId) {
-        return this.getDownloadUrl(String.valueOf(objectId), environment.getProperty("s3.buckets.illustrations"));
+        return this.putDownloadUrl(String.valueOf(objectId), environment.getProperty("s3.buckets.illustrations"));
     }
 
     private String getDownloadUrl(final String objectId, final String bucket) {
