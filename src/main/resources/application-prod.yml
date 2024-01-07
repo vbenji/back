@@ -1,14 +1,12 @@
 spring:
   datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:./cours;AUTO_SERVER=TRUE
-    username: root
-    password: root
+    url: jdbc:postgresql://localhost:5432/michelin
+    username: fullstack
+    password: fullstack
   h2:
     console:
       enabled: true
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
     generate-ddl: true
     hibernate:
