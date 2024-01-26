@@ -1,8 +1,9 @@
-FROM maven
+FROM eclipse-temurin:21-jre
 
-RUN mkdir /app
 WORKDIR /app
 
-COPY target/fs-back-0.0.1-SNAPSHOT.jar .
+COPY target/michelin-back-*.jar michelin-back.jar
 
-CMD java -jar fs-back-0.0.1-SNAPSHOT.jar
+CMD ["java", "-jar", "michelin-back.jar"]
+
+# mvn clean package

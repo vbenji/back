@@ -1,14 +1,13 @@
 spring:
-  datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:./cours;AUTO_SERVER=TRUE
-    username: root
-    password: root
+  #datasource:
+    # url: jdbc:postgresql://host.docker.internal:2345/myDatabase
+    #url: jdbc:postgresql://172.17.0.1:2345/myDatabase
+    #username: databaseUser
+    #password: databasePassword
   h2:
     console:
       enabled: true
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     defer-datasource-initialization: true
     generate-ddl: true
     hibernate:
