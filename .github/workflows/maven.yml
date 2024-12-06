@@ -57,6 +57,6 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        file: Dockerfile.gha
+        file: Dockerfile
         push: true
         tags: rg.fr-par.scw.cloud/polytech2024/vbenji/back:v1
